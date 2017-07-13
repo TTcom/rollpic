@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+<style type="text/css">
+*{margin: 0;padding: 0;}li{list-style: none;}
+body {
+    min-width: 1200px;
+    background-color:#eee;
+}
+
+.box {
+    width: 800px;
+    height: 165px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+#indemo {
+    float: left;
+    width: 200%;
+    padding-top: 25px;
+}
+
+.box ul li {
+   width: 160px;
+    height: 163px;
+    float: left;
+    margin-right: 5px;
+    margin-left: 26px;
+    cursor:pointer;
+}
+
+.imgs {
+    width: 160px;
+    height: 90px;
+    margin-top: 4px;
+    display: block;
+}
+#demo1 {
+        float: left;
+}
+
+#demo2 {
+        float: left;
+}   
+</style>
+
+	</head>
+	<body>
+   
+ <div class="box">
+    <div id="indemo">
+        <div id="demo1">
+			 <ul>
+			                                                
+			  <li> <img class="imgs" src="images/01.gif" /></li>
+			  <li> <img class="imgs" src="images/02.jpg" /></li>
+			  <li> <img class="imgs" src="images/03.jpg" /></li>
+			  <li> <img class="imgs" src="images/04.jpg" /></li>
+			 
+			</ul>
+       </div>
+		<div id="demo2">
+			
+		</div>
+    </div>
+  </div>
+	</body>
+</html>
+<script type="text/javascript" src="jquery-1.11.3.min.js" ></script>
+<script>
+	
+	$(function () {
+    var tab = document.getElementsByClassName("box")[0];
+    var tab1 = document.getElementById("demo1");
+    var tab2 = document.getElementById("demo2");
+    tab2.innerHTML = tab1.innerHTML;
+    
+  function Marquee() {
+        if (tab2.offsetWidth - tab.scrollLeft <= 0)
+            tab.scrollLeft -= tab1.offsetWidth
+        else {
+            tab.scrollLeft++;
+        }
+      // tab.scrollLeft意为box被卷去的左侧
+       //tab1.offsetWidth 意为tab1的宽度
+    }
+	  var MyMar = setInterval(Marquee, 30);
+	   tab.onmouseover = function () { clearInterval(MyMar) };
+	   tab.onmouseout = function () { MyMar = setInterval(Marquee, 30) };
+
+});
+	
+</script>
